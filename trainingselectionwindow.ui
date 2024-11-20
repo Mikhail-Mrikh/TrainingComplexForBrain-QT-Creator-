@@ -13,6 +13,87 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <widget class="QStackedWidget" name="firstTrainingPage">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>901</width>
+     <height>651</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="page">
+    <widget class="QPushButton" name="viewProfileButton">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>161</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Посмотреть профиль</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="mathTrainingButton">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>130</y>
+       <width>161</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тренировка 1</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="speedTrainingButton">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>200</y>
+       <width>161</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тренировка 2</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>60</y>
+       <width>141</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>  Разделы тренировок</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="offButton">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>280</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>off</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="SecondTrainingPage"/>
+  </widget>
  </widget>
  <resources/>
  <connections/>

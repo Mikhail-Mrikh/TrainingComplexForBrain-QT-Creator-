@@ -2,7 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "trainingselectionwindow.h"  // Подключаем заголовок нового окна
+#include "trainingselectionwindow.h"
+
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QMessageBox>
 
 
 namespace Ui {
@@ -17,18 +21,29 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void checkAndCreateTable();
+
 private slots:
-    void on_registerButton_clicked();   // слот для обработки нажатия на кнопку "Регистрация"
 
-    void on_rgBtn_clicked();
-
+    // Кнопки стартового окна (Первого)
+    void on_questButtonFirstWindow_clicked();
     void on_enterButton_clicked();
+    void on_registerButton_clicked();
+    void on_exitButton_clicked();
 
-    void on_etrBtn_clicked();
+    // Кнопки второго окна (Регистрация)
+    void on_questButtonSecondWindow_clicked();
+    void on_loadImgButton_clicked();
+    void on_rgBtn_clicked();
+    void on_backButton_clicked();
 
 private:
     Ui::MainWindow *ui;
-    TrainingSelectionWindow *trainingWindow;  // Указатель на новое окно
+
+    QSqlDatabase db;
+
+    TrainingSelectionWindow *trainingWindow;
+    QPixmap loadedImage;
 
 };
 
