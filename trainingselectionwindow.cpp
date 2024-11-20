@@ -1,6 +1,7 @@
 #include "trainingselectionwindow.h"
 #include "ui_trainingselectionwindow.h"
 #include "mathtrainingwindow.h"
+#include "speedtrainingwindow.h"
 
 #include <QMessageBox>
 #include <QFile>
@@ -20,6 +21,8 @@ TrainingSelectionWindow::TrainingSelectionWindow(QWidget *parent) :
     }
 
     connect(ui->viewProfileButton, &QPushButton::clicked, this, &TrainingSelectionWindow::on_viewProfileButton_clicked);
+
+
 }
 
 TrainingSelectionWindow::~TrainingSelectionWindow()
@@ -43,9 +46,9 @@ void TrainingSelectionWindow::on_mathTrainingButton_clicked()
 
 void TrainingSelectionWindow::on_speedTrainingButton_clicked()
 {
-    // Логика для тренировки 2
-    QMessageBox::information(this, "Тренировка", "Вы выбрали тренировку 2");
-    // Здесь можно открыть окно с подробной информацией о тренировке или начать тренировку
+    SpeedTrainingWindow *speedTraining = new SpeedTrainingWindow(this);
+    speedTraining->setAttribute(Qt::WA_DeleteOnClose); // Удалить окно при закрытии
+    speedTraining->show(); // Открыть окно для тренировки на скорость
 }
 
 void TrainingSelectionWindow::on_offButton_clicked()

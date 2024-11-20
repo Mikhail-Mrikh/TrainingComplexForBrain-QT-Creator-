@@ -29,11 +29,13 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         mathtrainingwindow.cpp \
+        speedtrainingwindow.cpp \
         trainingselectionwindow.cpp
 
 HEADERS += \
         mainwindow.h \
         mathtrainingwindow.h \
+        speedtrainingwindow.h \
         trainingselectionwindow.h
 
 FORMS += \

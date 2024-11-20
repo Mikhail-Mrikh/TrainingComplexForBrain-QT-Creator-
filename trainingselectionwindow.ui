@@ -49,7 +49,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Тренировка 1</string>
+      <string>Математика</string>
      </property>
     </widget>
     <widget class="QPushButton" name="speedTrainingButton">
