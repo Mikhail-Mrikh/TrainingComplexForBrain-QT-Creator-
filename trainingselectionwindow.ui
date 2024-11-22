@@ -29,8 +29,8 @@
     <widget class="QPushButton" name="viewProfileButton">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>0</y>
+       <x>10</x>
+       <y>10</y>
        <width>161</width>
        <height>71</height>
       </rect>
@@ -62,7 +62,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Тренировка 2</string>
+      <string>Скорость</string>
      </property>
     </widget>
     <widget class="QLabel" name="label">
@@ -78,17 +78,30 @@
       <string>  Разделы тренировок</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="offButton">
+    <widget class="QPushButton" name="backButtonToo">
      <property name="geometry">
       <rect>
-       <x>430</x>
-       <y>280</y>
+       <x>820</x>
+       <y>30</y>
        <width>51</width>
        <height>41</height>
       </rect>
      </property>
      <property name="text">
-      <string>off</string>
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="questButtonThirdWindow">
+     <property name="geometry">
+      <rect>
+       <x>760</x>
+       <y>30</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </widget>

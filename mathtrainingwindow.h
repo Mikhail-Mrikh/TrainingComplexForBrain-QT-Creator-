@@ -3,8 +3,11 @@
 
 #include <QDialog>
 #include <QLabel>
-#include <QLineEdit>
 #include <QPushButton>
+#include <QLineEdit>
+#include <QVBoxLayout>
+#include <QComboBox>
+#include <QTimer>
 
 class MathTrainingWindow : public QDialog
 {
@@ -14,25 +17,47 @@ public:
     explicit MathTrainingWindow(QWidget *parent = nullptr);
     ~MathTrainingWindow();
 
+signals:
+    void maxMathStreakUpdated(int maxStreak);
+
+
 private slots:
-    void onSubmitAnswer();
-    void onNextQuestion();
+    void onStartButtonClicked();
+    void onCheckAnswerButtonClicked();
+    void onTimerTimeout();
+    void onDifficultyChanged(int index);
+    void onOperationChanged(int index);
 
 private:
-    void generateQuestion();
-    void updateStreakLabels();
+    enum MathOperation {
+        Addition,
+        Subtraction,
+        Multiplication,
+        Division,
+        Complex
+    };
 
-    QLabel *questionLabel;          // Метка для задания
-    QLineEdit *answerInput;         // Поле ввода ответа
-    QPushButton *submitAnswerButton; // Кнопка "Проверить"
-    QPushButton *nextQuestionButton; // Кнопка "Следующее задание"
+    void generateTask();
+    void resetTask();
+    void endTraining();
 
-    QLabel *currentStreakLabel;     // Метка текущего стрика
-    QLabel *maxStreakLabel;         // Метка максимального стрика
+    QLabel *taskLabel;
+    QLineEdit *answerInput;
+    QPushButton *startButton;
+    QPushButton *checkAnswerButton;
+    QLabel *timerLabel;
+    QLabel *streakLabel;
+    QComboBox *difficultyComboBox;
+    QComboBox *operationComboBox;
+    QTimer *timer;
 
-    int correctAnswer;              // Правильный ответ
-    int currentStreak;              // Текущий стрик
-    int maxStreak;                  // Максимальный стрик
+    int correctAnswer;
+    int currentTime;
+    int remainingTime;
+    int currentStreak;
+    int maxStreak;
+    int difficultyLevel;
+    MathOperation currentOperation;
 };
 
 #endif // MATHTRAININGWINDOW_H

@@ -30,6 +30,7 @@ QLineEdit {
 
 /* Стиль при фокусе для всех строк ввода */
 QLineEdit:focus {
-    border: 1px solid #4CAF50;
+    border: 1px solid blue;
     background-color: #fff;
 }
+

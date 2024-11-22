@@ -74,6 +74,9 @@
         <layout class="QVBoxLayout" name="verticalLayoutTextEmailPassword">
          <item>
           <widget class="QLabel" name="TextEmail">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
            <property name="text">
             <string>Email:</string>
            </property>
@@ -135,9 +138,9 @@
       <property name="geometry">
        <rect>
         <x>210</x>
-        <y>430</y>
+        <y>400</y>
         <width>421</width>
-        <height>101</height>
+        <height>141</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayoutRegProfile">

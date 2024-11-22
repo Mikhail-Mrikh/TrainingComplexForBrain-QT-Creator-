@@ -40,7 +40,6 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui \
-        mathtrainingwindow.ui \
         trainingselectionwindow.ui
 
 # Default rules for deployment.

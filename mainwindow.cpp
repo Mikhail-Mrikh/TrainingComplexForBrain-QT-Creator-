@@ -53,7 +53,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     }
     else
     {
-        checkAndCreateTable(); // Проверяем и создаём таблицу, если нужно
+        checkAndCreateTable();
     }
 
     setWindowTitle("BrainDrain");
@@ -121,7 +121,7 @@ void MainWindow::on_enterButton_clicked()
             QMessageBox::information(this, "Успешный вход", "Добро пожаловать!");
 
             trainingWindow = new TrainingSelectionWindow();
-            trainingWindow->setUserProfile(username, name, userImage);
+            trainingWindow->setUserProfile(username, name, userImage, 1);
             trainingWindow->show();
             this->close();
         }
@@ -197,7 +197,6 @@ void MainWindow::on_rgBtn_clicked()
             return;
         }
 
-        // Проверяем подключение к базе данных
         QSqlDatabase db = QSqlDatabase::database();
         if (!db.isOpen()) {
             QMessageBox::critical(this, "Ошибка", "База данных не подключена!");
@@ -210,7 +209,6 @@ void MainWindow::on_rgBtn_clicked()
         query.prepare("INSERT INTO users (username, password, name, image) "
                       "VALUES (:username, :password, :name, :image)");
 
-        // Привязываем параметры
         query.bindValue(":username", email);
         query.bindValue(":password", password);
         query.bindValue(":name", name);
@@ -228,7 +226,6 @@ void MainWindow::on_rgBtn_clicked()
 
         query.bindValue(":image", imageData);
 
-        // Выполнение запроса
         if (!query.exec()) {
             QMessageBox::warning(this, "Ошибка", "Ошибка выполнения запроса: " + query.lastError().text());
         } else {
