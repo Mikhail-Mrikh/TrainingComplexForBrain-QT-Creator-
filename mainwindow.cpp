@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
 {
     ui->setupUi(this);
 
-    QPixmap pixmap("C:/Users/Mikhail/Documents/BrainDrain.jpg");
+    QPixmap pixmap(":/images/brainDrain");
     ui->startImg->setPixmap(pixmap);
 
     ui->startImg->setStyleSheet(
@@ -31,12 +31,12 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
         "background-color: #ecf0f1;"
     );
 
-    QPixmap rightBackbuttonPixmap("C:/Users/Mikhail/Documents/rightBack.png");
+    QPixmap rightBackbuttonPixmap(":/images/rightBack");
     QIcon rightBackbuttonIcon(rightBackbuttonPixmap);
     ui->backButton->setIcon(rightBackbuttonIcon);
     ui->backButton->setIconSize(rightBackbuttonPixmap.rect().size());
 
-    QPixmap questionbuttonPixmap("C:/Users/Mikhail/Documents/question.png");
+    QPixmap questionbuttonPixmap(":/images/question");
     QIcon questionbuttonIcon(questionbuttonPixmap);
     ui->questButtonSecondWindow->setIcon(questionbuttonIcon);
     ui->questButtonSecondWindow->setIconSize(questionbuttonPixmap.rect().size());

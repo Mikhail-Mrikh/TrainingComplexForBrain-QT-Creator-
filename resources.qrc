@@ -2,4 +2,12 @@
     <qresource prefix="/style">
         <file>styles.css</file>
     </qresource>
+    <qresource prefix="/images">
+        <file alias="brainDrain">images/BrainDrain.jpg</file>
+        <file alias="math">images/math.jpg</file>
+        <file alias="memory">images/memory.jpg</file>
+        <file alias="question">images/question.png</file>
+        <file alias="rightBack">images/rightBack.png</file>
+        <file alias="speed">images/speed.jpg</file>
+    </qresource>
 </RCC>

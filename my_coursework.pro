@@ -30,6 +30,7 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         mathtrainingwindow.cpp \
+        netmemorywindow.cpp \
         speedtrainingwindow.cpp \
         trainingselectionwindow.cpp
 
@@ -37,6 +38,7 @@ HEADERS += \
         languagetrainingwindow.h \
         mainwindow.h \
         mathtrainingwindow.h \
+        netmemorywindow.h \
         speedtrainingwindow.h \
         trainingselectionwindow.h
 

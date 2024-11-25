@@ -117,6 +117,19 @@
       <string>Языки</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="NetMemoryButton">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>470</y>
+       <width>161</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Net Memory</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="SecondTrainingPage"/>
   </widget>

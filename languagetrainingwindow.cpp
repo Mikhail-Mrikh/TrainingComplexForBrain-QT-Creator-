@@ -1,4 +1,5 @@
 #include "languagetrainingwindow.h"
+#include "trainingselectionwindow.h"
 #include <QVBoxLayout>
 #include <QSqlQuery>
 #include <QSqlError>

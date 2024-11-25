@@ -1,9 +1,10 @@
-#include "mainwindow.h"
 #include "trainingselectionwindow.h"
 #include "ui_trainingselectionwindow.h"
 #include "mathtrainingwindow.h"
 #include "speedtrainingwindow.h"
 #include "languagetrainingwindow.h"
+#include "netmemorywindow.h"  // Добавляем заголовок для NetMemoryWindow
+#include "mainwindow.h"
 
 #include <QMessageBox>
 #include <QFile>
@@ -15,7 +16,7 @@
 TrainingSelectionWindow::TrainingSelectionWindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::TrainingSelectionWindow),
-    profileDialog(nullptr) // Инициализация указателя
+    profileDialog(nullptr)  // Инициализация указателя
 {
     ui->setupUi(this);
 
@@ -25,19 +26,18 @@ TrainingSelectionWindow::TrainingSelectionWindow(QWidget *parent) :
         this->setStyleSheet(styleSheet);
     }
 
-    QPixmap questionbuttonPixmap("C:/Users/Mikhail/Documents/question.png");
+    QPixmap questionbuttonPixmap(":/images/question");
     QIcon questionbuttonIcon(questionbuttonPixmap);
     ui->questButtonThirdWindow->setIcon(questionbuttonIcon);
     ui->questButtonThirdWindow->setIconSize(questionbuttonPixmap.rect().size());
 
-    QPixmap rightBackbuttonPixmap("C:/Users/Mikhail/Documents/rightBack.png");
+    QPixmap rightBackbuttonPixmap(":/images/rightBack");
     QIcon rightBackbuttonIcon(rightBackbuttonPixmap);
     ui->backButtonToo->setIcon(rightBackbuttonIcon);
     ui->backButtonToo->setIconSize(rightBackbuttonPixmap.rect().size());
 
     connect(ui->viewProfileButton, &QPushButton::clicked, this, &TrainingSelectionWindow::on_viewProfileButton_clicked);
-
-
+    connect(ui->NetMemoryButton, &QPushButton::clicked, this, &TrainingSelectionWindow::on_NetMemoryButton_clicked);
 }
 
 TrainingSelectionWindow::~TrainingSelectionWindow()
@@ -53,7 +53,6 @@ void TrainingSelectionWindow::setUserProfile(const QString &username, const QStr
     currentMaxMathStreak = maxMathStreak;
 }
 
-
 void TrainingSelectionWindow::on_mathTrainingButton_clicked()
 {
     MathTrainingWindow *mathTraining = new MathTrainingWindow(this);
@@ -67,7 +66,6 @@ void TrainingSelectionWindow::on_mathTrainingButton_clicked()
     mathTraining->show();
 }
 
-
 void TrainingSelectionWindow::on_speedTrainingButton_clicked()
 {
     SpeedTrainingWindow *speedTraining = new SpeedTrainingWindow(this);
@@ -79,7 +77,6 @@ void TrainingSelectionWindow::on_backButton_clicked()
 {
     MainWindow *mainWindow = new MainWindow();
     mainWindow->show();
-
     this->close();
 }
 
@@ -141,7 +138,7 @@ void TrainingSelectionWindow::on_questButtonThirdWindow_clicked()
     QVBoxLayout *mathLayout = new QVBoxLayout(mathTab);
 
     QLabel *mathImage = new QLabel(mathTab);
-    mathImage->setPixmap(QPixmap("C:/Users/Mikhail/Documents/math.jpg").scaled(250, 250, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    mathImage->setPixmap(QPixmap(":/images/math").scaled(250, 250, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     mathImage->setAlignment(Qt::AlignCenter);
 
     mathLayout->addWidget(mathImage);
@@ -163,7 +160,7 @@ void TrainingSelectionWindow::on_questButtonThirdWindow_clicked()
     QVBoxLayout *speedLayout = new QVBoxLayout(speedTab);
 
     QLabel *speedImage = new QLabel(speedTab);
-    speedImage->setPixmap(QPixmap("C:/Users/Mikhail/Documents/speed.jpg").scaled(250, 250, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    speedImage->setPixmap(QPixmap(":/images/speed").scaled(250, 250, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     speedImage->setAlignment(Qt::AlignCenter);
 
     speedLayout->addWidget(speedImage);
@@ -182,30 +179,27 @@ void TrainingSelectionWindow::on_questButtonThirdWindow_clicked()
     QVBoxLayout *memoryLayout = new QVBoxLayout(memoryTab);
 
     QLabel *memoryImage = new QLabel(memoryTab);
-    memoryImage->setPixmap(QPixmap("C:/Users/Mikhail/Documents/memory.jpg").scaled(250, 250, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    memoryImage->setPixmap(QPixmap(":/images/memory").scaled(250, 250, Qt::KeepAspectRatio, Qt::SmoothTransformation));
     memoryImage->setAlignment(Qt::AlignCenter);
 
     memoryLayout->addWidget(memoryImage);
     memoryLayout->addWidget(new QLabel(
         "<h3>Тренировка памяти</h3>"
-        "<p><b>Цель:</b> Улучшение кратковременной памяти и способности к запоминанию.</p>"
+        "<p><b>Цель:</b> Развитие памяти и концентрации внимания.</p>"
         "<ul>"
-        "<li>Запоминайте последовательности чисел, слов или изображений.</li>"
-        "<li>Сложность растет с увеличением количества элементов.</li>"
+        "<li>В каждом упражнении вам нужно будет запомнить несколько объектов.</li>"
+        "<li>По завершении задания вы должны будете воспроизвести их в правильном порядке.</li>"
         "</ul>",
         memoryTab));
     tabWidget->addTab(memoryTab, "Память");
 
-    // Добавляем кнопки
-    QVBoxLayout *mainLayout = new QVBoxLayout(helpDialog);
-    mainLayout->addWidget(tabWidget);
-
-    QPushButton *closeButton = new QPushButton("Закрыть", helpDialog);
-    connect(closeButton, &QPushButton::clicked, helpDialog, &QDialog::accept);
-    mainLayout->addWidget(closeButton);
-
-    helpDialog->setLayout(mainLayout);
     helpDialog->exec();
+}
+
+void TrainingSelectionWindow::on_NetMemoryButton_clicked() {
+    NetMemoryWindow *netMemoryWindow = new NetMemoryWindow(this);  // Создаем окно для тренировки памяти
+    netMemoryWindow->setAttribute(Qt::WA_DeleteOnClose);
+    netMemoryWindow->show();
 }
 
 void TrainingSelectionWindow::updateMaxMathStreak(int newMaxMathStreak)
@@ -215,10 +209,13 @@ void TrainingSelectionWindow::updateMaxMathStreak(int newMaxMathStreak)
     }
 }
 
-
 void TrainingSelectionWindow::on_languageTrainingButton_clicked()
 {
-    LanguageTrainingWindow *languageTest = new LanguageTrainingWindow(this);
-    languageTest->setAttribute(Qt::WA_DeleteOnClose);
-    languageTest->show();
+    // Проверяем, если окно еще не создано
+    if (!netMemoryTraining)
+    {
+        netMemoryTraining = new NetMemoryWindow(this);
+    }
+    this->hide();
+    netMemoryTraining->show(); // Отображаем окно
 }
