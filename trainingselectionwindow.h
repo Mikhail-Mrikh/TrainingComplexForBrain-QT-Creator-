@@ -26,12 +26,13 @@ private slots:
     void on_mathTrainingButton_clicked();
     void on_speedTrainingButton_clicked();
 
-
     void on_backButton_clicked();
 
     void on_viewProfileButton_clicked();
 
     void on_questButtonThirdWindow_clicked();
+
+    void on_languageTrainingButton_clicked();
 
 private:
     Ui::TrainingSelectionWindow *ui;

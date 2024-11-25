@@ -26,6 +26,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        languagetrainingwindow.cpp \
         main.cpp \
         mainwindow.cpp \
         mathtrainingwindow.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
         trainingselectionwindow.cpp
 
 HEADERS += \
+        languagetrainingwindow.h \
         mainwindow.h \
         mathtrainingwindow.h \
         speedtrainingwindow.h \

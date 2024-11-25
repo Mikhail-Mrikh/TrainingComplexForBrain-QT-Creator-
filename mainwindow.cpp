@@ -17,7 +17,7 @@
 #include <QBuffer>
 #include <QDebug>
 
-// Работа  в главном окне
+// Работа в главном окне
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -143,8 +143,6 @@ void MainWindow::on_exitButton_clicked()
     QApplication::quit();
 }
 
-
-
 /* Второе окно - создание профиля (аккаунта) */
 
 // Справочная информация
@@ -252,7 +250,7 @@ void MainWindow::checkAndCreateTable() {
     }
 
     if (!query.next()) {
-        QString createTableQuery = R"(
+        QString createUsersTableQuery = R"(
             CREATE TABLE users (
                 username TEXT PRIMARY KEY,
                 password TEXT NOT NULL,
@@ -261,13 +259,31 @@ void MainWindow::checkAndCreateTable() {
             );
         )";
 
-        if (!query.exec(createTableQuery)) {
-            qDebug() << "Ошибка создания таблицы:" << query.lastError().text();
-        } else {
-            qDebug() << "Таблица users успешно создана.";
+        if (!query.exec(createUsersTableQuery)) {
+            qDebug() << "Ошибка создания таблицы пользователей:" << query.lastError().text();
         }
-    } else {
-        qDebug() << "Таблица users уже существует.";
+    }
+
+    QString checkWordsTableQuery = R"(
+        SELECT name FROM sqlite_master WHERE type='table' AND name='words';
+    )";
+
+    if (!query.exec(checkWordsTableQuery)) {
+        qDebug() << "Ошибка проверки таблицы слов:" << query.lastError().text();
+        return;
+    }
+
+    if (!query.next()) {
+        QString createWordsTableQuery = R"(
+            CREATE TABLE words (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                word TEXT NOT NULL,
+                meaning TEXT NOT NULL
+            );
+        )";
+
+        if (!query.exec(createWordsTableQuery)) {
+            qDebug() << "Ошибка создания таблицы слов:" << query.lastError().text();
+        }
     }
 }
-

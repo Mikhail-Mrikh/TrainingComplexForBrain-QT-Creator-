@@ -3,6 +3,7 @@
 #include "ui_trainingselectionwindow.h"
 #include "mathtrainingwindow.h"
 #include "speedtrainingwindow.h"
+#include "languagetrainingwindow.h"
 
 #include <QMessageBox>
 #include <QFile>
@@ -214,3 +215,10 @@ void TrainingSelectionWindow::updateMaxMathStreak(int newMaxMathStreak)
     }
 }
 
+
+void TrainingSelectionWindow::on_languageTrainingButton_clicked()
+{
+    LanguageTrainingWindow *languageTest = new LanguageTrainingWindow(this);
+    languageTest->setAttribute(Qt::WA_DeleteOnClose);
+    languageTest->show();
+}
